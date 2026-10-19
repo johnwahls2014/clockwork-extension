@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Clockwork</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<main>
+  <section id="world" class="pane">
+    <div class="hero">
+      <div class="flips">
+        <b class="flip" id="fH"></b><b class="flip" id="fM"></b><b class="flip" id="fS"></b><span id="fP" class="sub"></span>
+      </div>
+      <div id="localDate" class="date"></div>
+      <div id="localTz" class="sub"></div>
+    </div>
+    <ul id="worldList" class="list"></ul>
+    <form id="tzForm" class="row">
+      <select id="tzSelect" aria-label="City or time zone"></select>
+      <button class="btn">Add city</button>
+    </form>
+  </section>
+
+  <section id="alarms" class="pane" hidden>
+    <ul id="alarmList" class="list"></ul>
+    <form id="alarmForm" class="card">
+      <div class="row">
+        <input type="time" id="aTime" value="07:00" required aria-label="Alarm time">
+        <input id="aLabel" placeholder="Label (optional)" maxlength="30" aria-label="Alarm label">
+      </div>
+      <div class="days" id="aDays"></div>
+      <button class="btn wide">Add alarm</button>
+    </form>
+  </section>
+
+  <section id="timers" class="pane" hidden>
+    <div class="presets">
+      <button class="btn ghost" data-act="preset" data-min="1">1 min</button>
+      <button class="btn ghost" data-act="preset" data-min="5">5 min</button>
+      <button class="btn ghost" data-act="preset" data-min="10">10 min</button>
+      <button class="btn ghost" data-act="preset" data-min="25">25 min</button>
+    </div>
+    <ul id="timerList" class="list"></ul>
+    <form id="timerForm" class="card">
+      <div class="row">
+        <input id="tH" type="number" min="0" max="99" placeholder="hours" aria-label="Hours">
+        <input id="tM" type="number" min="0" max="59" placeholder="min" aria-label="Minutes">
+        <input id="tS" type="number" min="0" max="59" placeholder="sec" aria-label="Seconds">
+      </div>
+      <input id="tLabel" placeholder="Label (optional)" maxlength="30" aria-label="Timer label">
+      <button class="btn wide">Start timer</button>
+    </form>
+  </section>
+
+  <section id="stopwatch" class="pane" hidden>
+    <div id="swDisp" class="num">00:00.00</div>
+    <div class="row center">
+      <button class="circle" id="swLap" data-act="sw-lap">Lap</button>
+      <button class="circle go" id="swGo" data-act="sw-start">Start</button>
+    </div>
+    <ol id="lapList" class="list laps"></ol>
+  </section>
+</main>
+<nav>
+  <button data-act="tab" data-id="world">World</button>
+  <button data-act="tab" data-id="alarms">Alarms</button>
+  <button data-act="tab" data-id="timers">Timers</button>
+  <button data-act="tab" data-id="stopwatch">Stopwatch</button>
+</nav>
+<script src="popup.js"></script>
+</body>
+</html>
